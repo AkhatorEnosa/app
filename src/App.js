@@ -13,6 +13,12 @@ const app = new Clarifai.App({
   apiKey: 'f7a7eaa7139c41edae3fbfaddd32739a'
  });
 
+ 
+
+//  (function () {
+//     fetch("http://localhost:3001").then(res => res.json()). then(console.log);
+//   })();
+
 class App extends Component {
   constructor () {
     super();

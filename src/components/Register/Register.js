@@ -1,7 +1,7 @@
 import React from "react";
 // import './SignIn.css';
 
-const Register = (prop) => {
+const Register = (props) => {
     return (
         <div className="pa4 br3 shadow-5 f6 w-40 center white">
             <main className="pa1 black-80">
@@ -23,14 +23,14 @@ const Register = (prop) => {
                     </fieldset>
                     <div className="">
                         <input 
-                            onClick={()=> prop.onRouteChange("signin")}
+                            onClick={()=> props.onRouteChange("signin")}
                             className="b br2 ph3 pv2 input-reset ba grow pointer f6 dib" 
                             style={{ outline: "none", border:  "none", background: "rgb(61, 223, 255)"}} 
                             type="submit" 
                             value="Register" />
                     </div>
                     <div className="lh-copy mt3">
-                        <p className="f6 link dim black db pointer" onClick={()=> prop.onRouteChange("signin")}>Sign In</p>
+                        <p className="f6 link dim black db pointer" onClick={()=> props.onRouteChange("signin")}>Sign In</p>
                     </div>
                 </div>
             </main>
