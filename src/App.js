@@ -34,7 +34,7 @@ class App extends Component {
         id: "",
         name: "",
         email: "",
-        entries: ""
+        entries: 0
       }
     }
   }
@@ -44,7 +44,8 @@ class App extends Component {
       user: {
         id: data.id,
         name: data.name,
-        email: data.email
+        email: data.email,
+        entries: data.entries
       }
     })
   }
@@ -101,6 +102,21 @@ class App extends Component {
       Clarifai.FACE_DETECT_MODEL,
       this.state.input)
     .then(res => { 
+      if(res) {
+        fetch("http://localhost:3001/image", {
+          method: "put",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: this.state.user.id
+          })
+        })
+        .then(response => response.json())
+        .then(count => [
+          this.setState(Object.assign(this.state.user, {
+            entries: count
+          }))
+        ])
+      }
        this.displayRegion(this.calculateFaceLocation(res));
        this.setState({
          message: "Face found!"
