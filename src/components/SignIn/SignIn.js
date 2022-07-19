@@ -19,7 +19,7 @@ class SignIn extends React.Component{
         this.setState({ signInPassword: e.target.value});
     }
 
-    onSubmit = () => {
+    onSubmitSignIn = () => {
         fetch("http://localhost:3001/signin", {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -66,7 +66,7 @@ class SignIn extends React.Component{
                         </fieldset>
                         <div className="">
                             <input 
-                                onClick={this.onSubmit}
+                                onClick={this.onSubmitSignIn}
                                 className="b br2 ph3 pv2 input-reset ba grow pointer f6 dib" 
                                 style={{ outline: "none", border:  "none", background: "rgb(61, 223, 255)"}} 
                                 type="submit" 

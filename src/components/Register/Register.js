@@ -38,10 +38,10 @@ class Register extends React.Component{
         }).then(res => res.json())
         .then(user => {
             if(user.name === "" || user.email === "" || user.password === "") {
-                this.props.loadUser(user);
-                console.log("Fill all required fields");
+                console.log('Fill out all fields');
             } else {
-                this.props.onRouteChange('signin');
+                this.props.loadUser(user);
+                this.props.onRouteChange('home');
             }
         })
     }
