@@ -1,5 +1,5 @@
 import React from "react";
-// import './SignIn.css';
+import './Register.css';
 
 class Register extends React.Component{
     constructor (props) {
@@ -48,7 +48,7 @@ class Register extends React.Component{
     
     render() {
         return (
-            <div className="pa4 br3 shadow-5 f6 w-40 center white">
+            <div className="pa4 br3 shadow-5 f6 w-40 center white wrapper">
                 <main className="pa1 black-80">
                     <div className="measure center">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">

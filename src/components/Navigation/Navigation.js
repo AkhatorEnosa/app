@@ -5,7 +5,7 @@ const Navigation = (prop) => {
     if(prop.isSignedIn === true){
         return (
             <nav style={{ display: "flex", justifyContent: "flex-end"}} className="mb5">
-                <small className="f7 link dim white underline pa3 pointer bg-black" onClick={()=>prop.onRouteChange("signin")}>Sign Out</small>
+                <small className="f7 link dim white underline pa3 pointer bg-black" onClick={()=>prop.onRouteChange("signout")}>Sign Out</small>
             </nav>
         );
     } else {

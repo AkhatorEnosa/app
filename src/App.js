@@ -18,12 +18,7 @@ const app = new Clarifai.App({
 //  (function () {
 //     fetch("http://localhost:3001").then(res => res.json()). then(console.log);
 //   })();
-
-class App extends Component {
-  constructor () {
-    super();
-
-    this.state = {
+const initialState = {
       input: "",
       imageUrl: "",
       box: {},
@@ -37,6 +32,11 @@ class App extends Component {
         entries: 0
       }
     }
+class App extends Component {
+  constructor () {
+    super();
+
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -78,10 +78,9 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    if(route === 'signin') {
-      this.setState({
-        isSignedIn: false
-      })
+    if(route === 'signout') {
+      this.setState(initialState )
+      console.log(initialState.isSignedIn)
     } else if(route === 'home') {
       this.setState({
         isSignedIn: true
@@ -135,8 +134,29 @@ class App extends Component {
 
     return(
       <div className="App"> 
+        {
+          route === "home" ?
+            <React.Fragment>
+              <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
+              <div>
+                <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+                <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit}/>
+                <FaceRecognition imageUrl={imageUrl} box={box} message={message}/>
+              </div>
+            </React.Fragment> :
+            route === "signin" ?
+              <React.Fragment>
+                <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
+                <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              </React.Fragment>
+              : 
+                <React.Fragment>
+                  <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
+                  <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                </React.Fragment>
+        }
 
-        <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
+        {/* <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
         { route === "signin"
           ?<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           : route === "register"
@@ -146,7 +166,7 @@ class App extends Component {
             <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit}/>
             <FaceRecognition imageUrl={imageUrl} box={box} message={message}/>
           </div>
-        }
+        } */}
       </div>
     );
   }
