@@ -36,7 +36,8 @@ class SignIn extends React.Component{
                 alert("Wrong credentials");
                 this.setState({signInPassword:""})
             }
-        });
+        })
+        .catch(console.log);
     }
 
     render() {
