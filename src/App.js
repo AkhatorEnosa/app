@@ -91,7 +91,7 @@ class App extends Component {
       imageUrl: this.state.input
     })
 
-    fetch("http://localhost:3001/imageUrl", {
+    fetch("https://git.heroku.com/pure-basin-46445.git/imageUrl", {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -101,7 +101,7 @@ class App extends Component {
       .then(res => res.json())
     .then(res => { 
       if(res) {
-        fetch("http://localhost:3001/image", {
+        fetch("https://git.heroku.com/pure-basin-46445.git/image", {
           method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -154,18 +154,6 @@ class App extends Component {
                   <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 </React.Fragment>
         }
-
-        {/* <Navigation onRouteChange={this.onRouteChange} isSignedIn={isSignedIn}/>
-        { route === "signin"
-          ?<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          : route === "register"
-          ?<Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          :<div>
-            <Rank name={this.state.user.name} entries={this.state.user.entries}/>
-            <ImageLinkForm onInputChange={this.onInputChange} onSubmit={this.onSubmit}/>
-            <FaceRecognition imageUrl={imageUrl} box={box} message={message}/>
-          </div>
-        } */}
       </div>
     );
   }
