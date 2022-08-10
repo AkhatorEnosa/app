@@ -91,7 +91,7 @@ class App extends Component {
       imageUrl: this.state.input
     })
 
-    fetch("https://git.heroku.com/pure-basin-46445.git/imageUrl", {
+    fetch("https://pure-basin-46445.herokuapp.com/imageUrl", {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -101,7 +101,7 @@ class App extends Component {
       .then(res => res.json())
     .then(res => { 
       if(res) {
-        fetch("https://git.heroku.com/pure-basin-46445.git/image", {
+        fetch("https://pure-basin-46445.herokuapp.com/image", {
           method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
